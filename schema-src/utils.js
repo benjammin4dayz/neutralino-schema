@@ -58,6 +58,9 @@ module.exports.getNeutralinoTags = repoName => {
     return fetch(`https://api.github.com/repos/neutralinojs/${repoName}/tags`)
         .then(response => response.json())
         .then(data => data.map(d => d.name))
+        .then(tags =>
+            tags.map(tag => (tag.startsWith('v') ? tag.slice(1) : tag))
+        )
         .catch(err => {
             console.error(
                 `Failed to fetch tags from https://api.github.com/repos/neutralinojs/${repoName}/tags`,
