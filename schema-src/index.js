@@ -11,6 +11,7 @@ module.exports.getBundle = async () => {
       $schema: { type: 'string' },
       ...primary.properties,
       ...require('./general.json').properties,
+      ...require('./windows.json').properties,
       ...requireAllIndexed(__dirname),
     },
     required: [...primary.required],

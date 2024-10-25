@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "description": "These additional configuration options define metadata and appearance of executables for Windows platform. Every field is optional.\n\nSee https://neutralino.js.org/docs/configuration/neutralino.config.json#windows-specific-options for more information.",
+  "properties": {
+    "applicationIcon": {
+      "description": "The location of the executable's icon relative to neutralino.config.json. The icon must be in PNG format.\nIf it is not set, an icon from `modes.window.icon` will be chosen instead.\nIf `modes.window.icon` does not point to a PNG file, too, a default Neutralino.js icon will be used.",
+      "type": "string"
+    },
+    "applicationName": {
+      "description": "The human-readable application name. Fills in the `ProductName` field of the executable.",
+      "type": "string"
+    },
+    "author": {
+      "description": "The developer of the application. Fills in the `CompanyName` field of the executable.",
+      "type": "string"
+    },
+    "copyright": {
+      "description": "Copyright information. Fills in the LegalCopyright field of the executable.",
+      "type": "string"
+    },
+    "description": {
+      "description": "A description of the executable file. This usually describes the purpose of your application. Fills in the `FileDescription` field of the executable.",
+      "type": "string"
+    }
+  },
+  "required": [],
+  "type": "object"
+}
