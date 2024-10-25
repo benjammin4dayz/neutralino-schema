@@ -54,7 +54,7 @@ module.exports.requireAllIndexed = dir => {
  * @returns {Promise<string[]>}
  */
 module.exports.getNeutralinoTags = repoName => {
-    console.log('Fetching available tags from GitHub...');
+    console.log(`Fetching available tags from "neutralinojs/${repoName}"`);
     return fetch(`https://api.github.com/repos/neutralinojs/${repoName}/tags`)
         .then(response => response.json())
         .then(data => data.map(d => d.name))

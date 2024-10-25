@@ -19,7 +19,7 @@ module.exports.getBundle = async () => {
     };
 
     if (!bundleCache.binaryVersion) {
-        bundleCache.binaryVersion = await getNeutralinoTags('neutralino');
+        bundleCache.binaryVersion = await getNeutralinoTags('neutralinojs');
     }
     if (!bundleCache.clientVersion) {
         bundleCache.clientVersion = await getNeutralinoTags('neutralino.js');

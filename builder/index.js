@@ -92,9 +92,8 @@ async function writeConfigFile(filepath) {
     const schema = await getBundle();
     const config = schemaToJSON(schema);
 
-    config['$schema'] = new URL(
-        package.repository.url + '/neutralino.config.schema.json'
-    ).href;
+    config['$schema'] =
+        'https://raw.githubusercontent.com/benjammin4dayz/neutralino-schema/refs/heads/main/dist/neutralino.config.schema.json';
 
     fs.writeFileSync(filepath, JSON.stringify(config, null, 2));
 }
