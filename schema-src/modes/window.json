@@ -1,97 +1,97 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "additionalProperties": false,
-    "description": "Properties for window mode. See https://neutralino.js.org/docs/configuration/modes/#window for more information.",
-    "properties": {
-        "alwaysOnTop": {
-            "description": "Activates the top-most mode.",
-            "type": "boolean"
-        },
-        "borderless": {
-            "description": "Activates the borderless mode.",
-            "type": "boolean"
-        },
-        "center": {
-            "description": "Centers the native app window initially. The default value is false.",
-            "type": "boolean"
-        },
-        "enableInspector": {
-            "description": "Automatically opens the developer tools window.",
-            "type": "boolean"
-        },
-        "exitProcessOnClose": {
-            "description": "If this setting is true, the app process will exit when the user clicks on the close button. Otherwise, the framework will dispatch the windowClose event.",
-            "type": "boolean"
-        },
-        "extendUserAgentWith": {
-            "description": "Extends the default webview-specific user agent string with a custom suffix. If this value is not set, the webview sets the default user agent from the platform-specific rendering engine (i.e., WebKit on GNU/Linux).",
-            "type": "string"
-        },
-        "fullScreen": {
-            "description": "Activates the full-screen mode. The default value is false.",
-            "type": "boolean"
-        },
-        "height": {
-            "description": "Height of the native window. The default value is 600.",
-            "type": "number"
-        },
-        "hidden": {
-            "description": "Make the window invisible. This setting can be used to develop background services.",
-            "type": "boolean"
-        },
-        "icon": {
-            "description": "Application icon's file name. You can directly point to an image file in the resources directory. We recommend you to choose a transparent PNG file.",
-            "type": "string"
-        },
-        "maxHeight": {
-            "description": "Maximum height of the native window. The default value is the height value.",
-            "type": "number"
-        },
-        "maxWidth": {
-            "description": "Maximum width of the native window. The default value is the width value.",
-            "type": "number"
-        },
-        "maximize": {
-            "description": "Launches the application maximized.",
-            "type": "boolean"
-        },
-        "minHeight": {
-            "description": "Minimum height of the native window. The default value is the height value.",
-            "type": "number"
-        },
-        "minWidth": {
-            "description": "Minimum width of the native window. The default value is the width value.",
-            "type": "number"
-        },
-        "resizable": {
-            "description": "Make the window resizable or not. The default value is true.",
-            "type": "boolean"
-        },
-        "title": {
-            "description": "Title of the native window. The default value is the applicationId.",
-            "type": "string"
-        },
-        "transparent": {
-            "description": "Enables the transparent native window mode for the application instance. If the transparency mode is activated, users can see through the webview if the webpage background uses transparent background colors. Partial transparency can be activated using the rgba() CSS color function. You can use this feature to create semi-transparent windows, windows with custom shadows, and custom-shaped window frames. The default value is false. Note: Unlike in other platforms, Windows native window becomes borderless (window controls will be hidden) with the activation of the transparent mode.",
-            "type": "boolean"
-        },
-        "useSavedState": {
-            "description": "Save and load the primary window state (width, height, x, y, values and maximized status) automatically. The default value is true.",
-            "type": "boolean"
-        },
-        "width": {
-            "description": "Width of the native window. The default value is 800.",
-            "type": "number"
-        },
-        "x": {
-            "description": "Left position (x) of the native window. The default value is the value of the environment variable NL_WINDOW_X or -1.",
-            "type": "number"
-        },
-        "y": {
-            "description": "Right position (y) of the native window. The default value is the value of the environment variable NL_WINDOW_Y or -1.",
-            "type": "number"
-        }
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "description": "Properties for window mode. See https://neutralino.js.org/docs/configuration/modes/#window for more information.",
+  "properties": {
+    "alwaysOnTop": {
+      "description": "Activates the top-most mode.",
+      "type": "boolean"
     },
-    "required": [],
-    "type": "object"
+    "borderless": {
+      "description": "Activates the borderless mode.",
+      "type": "boolean"
+    },
+    "center": {
+      "description": "Centers the native app window initially. The default value is false.",
+      "type": "boolean"
+    },
+    "enableInspector": {
+      "description": "Automatically opens the developer tools window.",
+      "type": "boolean"
+    },
+    "exitProcessOnClose": {
+      "description": "If this setting is true, the app process will exit when the user clicks on the close button. Otherwise, the framework will dispatch the windowClose event.",
+      "type": "boolean"
+    },
+    "extendUserAgentWith": {
+      "description": "Extends the default webview-specific user agent string with a custom suffix. If this value is not set, the webview sets the default user agent from the platform-specific rendering engine (i.e., WebKit on GNU/Linux).",
+      "type": "string"
+    },
+    "fullScreen": {
+      "description": "Activates the full-screen mode. The default value is false.",
+      "type": "boolean"
+    },
+    "height": {
+      "description": "Height of the native window. The default value is 600.",
+      "type": "number"
+    },
+    "hidden": {
+      "description": "Make the window invisible. This setting can be used to develop background services.",
+      "type": "boolean"
+    },
+    "icon": {
+      "description": "Application icon's file name. You can directly point to an image file in the resources directory. We recommend you to choose a transparent PNG file.",
+      "type": "string"
+    },
+    "maxHeight": {
+      "description": "Maximum height of the native window. The default value is the height value.",
+      "type": "number"
+    },
+    "maxWidth": {
+      "description": "Maximum width of the native window. The default value is the width value.",
+      "type": "number"
+    },
+    "maximize": {
+      "description": "Launches the application maximized.",
+      "type": "boolean"
+    },
+    "minHeight": {
+      "description": "Minimum height of the native window. The default value is the height value.",
+      "type": "number"
+    },
+    "minWidth": {
+      "description": "Minimum width of the native window. The default value is the width value.",
+      "type": "number"
+    },
+    "resizable": {
+      "description": "Make the window resizable or not. The default value is true.",
+      "type": "boolean"
+    },
+    "title": {
+      "description": "Title of the native window. The default value is the applicationId.",
+      "type": "string"
+    },
+    "transparent": {
+      "description": "Enables the transparent native window mode for the application instance. If the transparency mode is activated, users can see through the webview if the webpage background uses transparent background colors. Partial transparency can be activated using the rgba() CSS color function. You can use this feature to create semi-transparent windows, windows with custom shadows, and custom-shaped window frames. The default value is false. Note: Unlike in other platforms, Windows native window becomes borderless (window controls will be hidden) with the activation of the transparent mode.",
+      "type": "boolean"
+    },
+    "useSavedState": {
+      "description": "Save and load the primary window state (width, height, x, y, values and maximized status) automatically. The default value is true.",
+      "type": "boolean"
+    },
+    "width": {
+      "description": "Width of the native window. The default value is 800.",
+      "type": "number"
+    },
+    "x": {
+      "description": "Left position (x) of the native window. The default value is the value of the environment variable NL_WINDOW_X or -1.",
+      "type": "number"
+    },
+    "y": {
+      "description": "Right position (y) of the native window. The default value is the value of the environment variable NL_WINDOW_Y or -1.",
+      "type": "number"
+    }
+  },
+  "required": [],
+  "type": "object"
 }

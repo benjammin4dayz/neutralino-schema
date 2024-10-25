@@ -1,27 +1,27 @@
 {
-    "name": "neutralino-schema-builder",
-    "version": "1.0.0",
-    "license": "MIT",
-    "main": "index.js",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/benjammin4dayz/neutralino-schema"
-    },
-    "scripts": {
-        "build": "npm run format & node index.js --write",
-        "format": "prettier --write **/*.{js,json}",
-        "start": "nodemon --watch **/*.{js,json} --exec node index.js --serve",
-        "validate": "node index.js --validate"
-    },
-    "devDependencies": {
-        "@apidevtools/json-schema-ref-parser": "^11.7.0",
-        "ajv": "^8.17.1",
-        "mocha": "^10.7.3",
-        "nodemon": "^3.1.7",
-        "prettier": "^3.3.3",
-        "prettier-plugin-sort-json": "^4.0.0"
-    },
-    "dependencies": {
-        "json-schema-to-jsdoc": "^1.1.1"
-    }
+  "name": "neutralino-schema-builder",
+  "version": "1.0.0",
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/benjammin4dayz/neutralino-schema"
+  },
+  "scripts": {
+    "build": "npm run format & node index.js --write",
+    "format": "prettier --write **/*.{js,json}",
+    "start": "nodemon --watch **/*.{js,json} --exec node index.js --serve",
+    "validate": "node index.js --validate"
+  },
+  "devDependencies": {
+    "@apidevtools/json-schema-ref-parser": "^11.7.0",
+    "ajv": "^8.17.1",
+    "mocha": "^10.7.3",
+    "nodemon": "^3.1.7",
+    "prettier": "^3.3.3",
+    "prettier-plugin-sort-json": "^4.0.0"
+  },
+  "dependencies": {
+    "json-schema-to-jsdoc": "^1.1.1"
+  }
 }

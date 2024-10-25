@@ -1,51 +1,51 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "additionalProperties": false,
-    "description": "Configuration values for the neu CLI.",
-    "properties": {
-        "autoReloadExclude": {
-            "description": "A JavaScript regular expression to exclude files from the auto-reload file watcher.",
-            "type": "string"
-        },
-        "binaryName": {
-            "description": "Binary file name of your application. If it is myapp, all binaries will use myapp-PLATFORM_ARCH format.",
-            "type": "string"
-        },
-        "binaryVersion": {
-            "description": "Neutralinojs server version. Get nightly builds by using the nightly tag.",
-            "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?|nightly$",
-            "type": "string"
-        },
-        "clientLibrary": {
-            "description": "Filename of the Neutralinojs JavaScript library.",
-            "type": "string"
-        },
-        "clientVersion": {
-            "description": "Neutralinojs client version. Get nightly builds by using the nightly tag.",
-            "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?|nightly$",
-            "type": "string"
-        },
-        "distributionPath": {
-            "description": "Sets the build path for neu CLI. For example, if you need to get the built binaries in build folder instead of dist, you can set the distributionPath accordingly.",
-            "type": "string"
-        },
-        "extensionsExclude": {
-            "description": "Regex pattern to exclude files from the extensions directory of the final app package.",
-            "type": "string"
-        },
-        "extensionsPath": {
-            "description": "Path of your application extensions.",
-            "type": "string"
-        },
-        "resourcesExclude": {
-            "description": "Regex pattern to exclude files from final app bundle.",
-            "type": "string"
-        },
-        "resourcesPath": {
-            "description": "Path of your application resources.",
-            "type": "string"
-        }
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "description": "Configuration values for the neu CLI.",
+  "properties": {
+    "autoReloadExclude": {
+      "description": "A JavaScript regular expression to exclude files from the auto-reload file watcher.",
+      "type": "string"
     },
-    "required": [],
-    "type": "object"
+    "binaryName": {
+      "description": "Binary file name of your application. If it is myapp, all binaries will use myapp-PLATFORM_ARCH format.",
+      "type": "string"
+    },
+    "binaryVersion": {
+      "description": "Neutralinojs server version. Get nightly builds by using the nightly tag.",
+      "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?|nightly$",
+      "type": "string"
+    },
+    "clientLibrary": {
+      "description": "Filename of the Neutralinojs JavaScript library.",
+      "type": "string"
+    },
+    "clientVersion": {
+      "description": "Neutralinojs client version. Get nightly builds by using the nightly tag.",
+      "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?|nightly$",
+      "type": "string"
+    },
+    "distributionPath": {
+      "description": "Sets the build path for neu CLI. For example, if you need to get the built binaries in build folder instead of dist, you can set the distributionPath accordingly.",
+      "type": "string"
+    },
+    "extensionsExclude": {
+      "description": "Regex pattern to exclude files from the extensions directory of the final app package.",
+      "type": "string"
+    },
+    "extensionsPath": {
+      "description": "Path of your application extensions.",
+      "type": "string"
+    },
+    "resourcesExclude": {
+      "description": "Regex pattern to exclude files from final app bundle.",
+      "type": "string"
+    },
+    "resourcesPath": {
+      "description": "Path of your application resources.",
+      "type": "string"
+    }
+  },
+  "required": [],
+  "type": "object"
 }

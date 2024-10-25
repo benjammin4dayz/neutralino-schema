@@ -1,123 +1,123 @@
 {
-    "$comment": "Shared configuration values; can be set in root-level or per-mode.",
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "additionalProperties": false,
-    "description": "",
-    "properties": {
-        "documentRoot": {
-            "description": "Sets the document root for the static server. For example, if you need to use 'resources' directory as the document root, you can use setup 'documentRoot' as follows. \n\n { \n   \"documentRoot\": \"/resource/\", \n   \"url\": \"/\" \n } \n\n Make sure to configure 'url' properly with the document root. The following configuration is wrong, it instructs the static server to fetch resources from './resources/resources'. \n\n { \n   \"documentRoot\": \"/resources/\", \n   \"url\": \"/resources/\" \n } \n\n However, you can use a sub-directory in URL, as shown below. \n\n { \n   \"documentRoot\": \"/\", \n   \"url\": \"/resources/\" \n }",
-            "type": "string"
-        },
-        "enableExtensions": {
-            "default": false,
-            "description": "Enables/disables extensions.",
-            "type": "boolean"
-        },
-        "enableNativeAPI": {
-            "default": false,
-            "description": "Enables or disables the native API. If you want to use any native API functions, you can set this option to 'true'.",
-            "type": "boolean"
-        },
-        "enableServer": {
-            "default": false,
-            "description": "Enables or disables the background server (Disables static file serving feature and native API messaging). If you load a remote URL to the webview, you can set this option to 'false'. Make sure to set this option to 'true' if you load resources from local sources.",
-            "type": "boolean"
-        },
-        "exportAuthInfo": {
-            "description": "Exports authentication details to the '${NL_PATH}/.tmp/auth_info.json' file with the following JSON structure. \n\n { \n   \"port\": \"<port>\", \n   \"accessToken\": \"<access_token>\" \n } \n\n You can use the above authentication details to connect with Neutralinojs from external processes by using WebSocket as an IPC mechanism.",
-            "type": "boolean"
-        },
-        "extensions": {
-            "description": "An array of extension definitions. Enable extensions by adding the following setting to your app config. \n\n \"enableExtensions\": true \n\n Learn more about this option here: \n https://github.com/neutralinojs/neutralinojs.github.io/blob/main/docs/how-to/extensions-overview.md#defining-the-extensions",
-            "items": {
-                "properties": {
-                    "command": {
-                        "description": "A cross-platform command to start the extension. Eg: 'node ${NL_PATH}/extensions/binary/main.js' will work on every platform.",
-                        "type": "string"
-                    },
-                    "commandDarwin": {
-                        "description": "Extension startup command for MacOS.",
-                        "type": "string"
-                    },
-                    "commandLinux": {
-                        "description": "Extension startup command for Linux.",
-                        "type": "string"
-                    },
-                    "commandWindows": {
-                        "description": "Extension startup command for Windows.",
-                        "type": "string"
-                    },
-                    "id": {
-                        "description": "A unique key to identify the extension.",
-                        "pattern": "^[a-zA-Z0-9]+(\\.[a-zA-Z0-9]+)*$",
-                        "type": "string"
-                    }
-                },
-                "required": ["id"],
-                "type": "object"
-            },
-            "type": "array"
-        },
-        "globalVariables": {
-            "description": "A key-value-based JavaScript object of custom global variables. \n\n You can make custom global variables too via 'neutralino.config.json', as shown below. \n\n \"globalVariables\": { \n   \"TEST\": \"Test Value\" \n } \n\n The above custom global variable's value can be accessed with 'NL_TEST'. You can set any data type for custom global variables. Look at the following examples. \n\n \"globalVariables\": { \n   \"TEST_1\": 1, \n   \"TEST_2\": null, \n   \"TEST_3\": 3.5, \n   \"TEST_4\": [3, 5, 4, 5], \n   \"TEST_5\": { \n     \"key\": \"value\", \n     \"anotherKey\": 100 \n   } \n } \n\n Avoid overriding predefined global variables. \n\n Learn more about this option here: \n https://github.com/neutralinojs/neutralinojs.github.io/blob/main/docs/api/global-variables.md#custom-global-variables",
-            "type": "object"
-        },
-        "logging": {
-            "additionalProperties": false,
-            "properties": {
-                "enabled": {
-                    "description": "Enables or disables the logging feature.",
-                    "type": "boolean"
-                },
-                "writeToLogFile": {
-                    "description": "Enables or disables log file. If this setting is 'false', the framework won't write log to 'neutralinojs.log', and it will write logs to standard streams.",
-                    "type": "boolean"
-                }
-            },
-            "type": "object"
-        },
-        "nativeAllowList": {
-            "description": "An array of native methods needs to be allowed from the frontend of the application. The wildcard character '*' is allowed inside entries. \n\n { \n   \"nativeAllowList\": [\"os.getEnv\"], \n   \"nativeAllowList\": [\"storage.*\"] \n }",
-            "items": {
-                "type": "string"
-            },
-            "type": "array"
-        },
-        "nativeBlockList": {
-            "description": "An array of native methods needs to be blocked from the frontend of the application. The wildcard character '*' is allowed inside entries. \n\n { \n   \"nativeBlockList\": [\"os.execCommand\"], \n   \"nativeBlockList\": [\"app.*\"] \n }",
-            "items": {
-                "type": "string"
-            },
-            "type": "array"
-        },
-        "port": {
-            "description": "The port of your application. If the value is 0, Neutralinojs will use a random available port.",
-            "type": "integer"
-        },
-        "serverHeaders": {
-            "description": "Custom headers for the static server and Websocket handshake process. For example, the following configuration sends a custom header with every outgoing HTTP response. \n\n { \n   \"serverHeaders\": { \n     \"Test-Header-Option\": \"Value\" \n   } \n }",
-            "type": "object"
-        },
-        "singlePageServe": {
-            "default": false,
-            "description": "Activates SPA (Single Page App) serving. When this option is enabled, the static server module serves the primary index.html file for sub-directory requests only if another index.html doesn't exist in a specific sub-directory. The default value for this option is false.",
-            "type": "boolean"
-        },
-        "tokenSecurity": {
-            "default": "one-time",
-            "description": "Neutralinojs uses a client-server communication pattern with a local WebSocket to handle native calls. This local server is protected with an auto-generated token. This option defines the security implementation for the token. \n\n Accepts the following values: \n\n - one-time (Recommended): Server sends the access token only once, and the client persists it in the sessionStorage. If another client (Eg: browser) tries to access the app, 'NE_RT_INVTOKN' error message will be shown instead of the application. Using this option is recommended since it reduces security issues. \n\n - none: Server sends the access token always, so any new client can see the application. \n\n ::: Danger: If you are using native APIs that can access your computer's internals such as 'os', 'filesystem', modules, never use 'none' option since any new client can use those APIs. :::",
-            "enum": ["one-time", "none"],
-            "type": "string",
-            "x-intellij-enum-metadata": {
-                "none": "Server sends the access token always, so any new client can see the application.",
-                "one-time": "(Recommended): Server sends the access token only once, and the client persists it in the 'sessionStorage'."
-            }
-        },
-        "url": {
-            "description": "The entry URL of the application. Neutralinojs will initially load this URL. This property accepts both relative and absolute URLs. See following examples. \n\n \"url\": \"/\" \n\n The above config loads 'http://localhost:<port>/' URL initially (internally '/index.html' is loaded). You can use remote urls too. \n\n \"url\": \"http://example.com\"",
-            "type": "string"
-        }
+  "$comment": "Shared configuration values; can be set in root-level or per-mode.",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "description": "",
+  "properties": {
+    "documentRoot": {
+      "description": "Sets the document root for the static server. For example, if you need to use 'resources' directory as the document root, you can use setup 'documentRoot' as follows. \n\n { \n   \"documentRoot\": \"/resource/\", \n   \"url\": \"/\" \n } \n\n Make sure to configure 'url' properly with the document root. The following configuration is wrong, it instructs the static server to fetch resources from './resources/resources'. \n\n { \n   \"documentRoot\": \"/resources/\", \n   \"url\": \"/resources/\" \n } \n\n However, you can use a sub-directory in URL, as shown below. \n\n { \n   \"documentRoot\": \"/\", \n   \"url\": \"/resources/\" \n }",
+      "type": "string"
     },
-    "required": [],
-    "type": "object"
+    "enableExtensions": {
+      "default": false,
+      "description": "Enables/disables extensions.",
+      "type": "boolean"
+    },
+    "enableNativeAPI": {
+      "default": false,
+      "description": "Enables or disables the native API. If you want to use any native API functions, you can set this option to 'true'.",
+      "type": "boolean"
+    },
+    "enableServer": {
+      "default": false,
+      "description": "Enables or disables the background server (Disables static file serving feature and native API messaging). If you load a remote URL to the webview, you can set this option to 'false'. Make sure to set this option to 'true' if you load resources from local sources.",
+      "type": "boolean"
+    },
+    "exportAuthInfo": {
+      "description": "Exports authentication details to the '${NL_PATH}/.tmp/auth_info.json' file with the following JSON structure. \n\n { \n   \"port\": \"<port>\", \n   \"accessToken\": \"<access_token>\" \n } \n\n You can use the above authentication details to connect with Neutralinojs from external processes by using WebSocket as an IPC mechanism.",
+      "type": "boolean"
+    },
+    "extensions": {
+      "description": "An array of extension definitions. Enable extensions by adding the following setting to your app config. \n\n \"enableExtensions\": true \n\n Learn more about this option here: \n https://github.com/neutralinojs/neutralinojs.github.io/blob/main/docs/how-to/extensions-overview.md#defining-the-extensions",
+      "items": {
+        "properties": {
+          "command": {
+            "description": "A cross-platform command to start the extension. Eg: 'node ${NL_PATH}/extensions/binary/main.js' will work on every platform.",
+            "type": "string"
+          },
+          "commandDarwin": {
+            "description": "Extension startup command for MacOS.",
+            "type": "string"
+          },
+          "commandLinux": {
+            "description": "Extension startup command for Linux.",
+            "type": "string"
+          },
+          "commandWindows": {
+            "description": "Extension startup command for Windows.",
+            "type": "string"
+          },
+          "id": {
+            "description": "A unique key to identify the extension.",
+            "pattern": "^[a-zA-Z0-9]+(\\.[a-zA-Z0-9]+)*$",
+            "type": "string"
+          }
+        },
+        "required": ["id"],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "globalVariables": {
+      "description": "A key-value-based JavaScript object of custom global variables. \n\n You can make custom global variables too via 'neutralino.config.json', as shown below. \n\n \"globalVariables\": { \n   \"TEST\": \"Test Value\" \n } \n\n The above custom global variable's value can be accessed with 'NL_TEST'. You can set any data type for custom global variables. Look at the following examples. \n\n \"globalVariables\": { \n   \"TEST_1\": 1, \n   \"TEST_2\": null, \n   \"TEST_3\": 3.5, \n   \"TEST_4\": [3, 5, 4, 5], \n   \"TEST_5\": { \n     \"key\": \"value\", \n     \"anotherKey\": 100 \n   } \n } \n\n Avoid overriding predefined global variables. \n\n Learn more about this option here: \n https://github.com/neutralinojs/neutralinojs.github.io/blob/main/docs/api/global-variables.md#custom-global-variables",
+      "type": "object"
+    },
+    "logging": {
+      "additionalProperties": false,
+      "properties": {
+        "enabled": {
+          "description": "Enables or disables the logging feature.",
+          "type": "boolean"
+        },
+        "writeToLogFile": {
+          "description": "Enables or disables log file. If this setting is 'false', the framework won't write log to 'neutralinojs.log', and it will write logs to standard streams.",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "nativeAllowList": {
+      "description": "An array of native methods needs to be allowed from the frontend of the application. The wildcard character '*' is allowed inside entries. \n\n { \n   \"nativeAllowList\": [\"os.getEnv\"], \n   \"nativeAllowList\": [\"storage.*\"] \n }",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "nativeBlockList": {
+      "description": "An array of native methods needs to be blocked from the frontend of the application. The wildcard character '*' is allowed inside entries. \n\n { \n   \"nativeBlockList\": [\"os.execCommand\"], \n   \"nativeBlockList\": [\"app.*\"] \n }",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "port": {
+      "description": "The port of your application. If the value is 0, Neutralinojs will use a random available port.",
+      "type": "integer"
+    },
+    "serverHeaders": {
+      "description": "Custom headers for the static server and Websocket handshake process. For example, the following configuration sends a custom header with every outgoing HTTP response. \n\n { \n   \"serverHeaders\": { \n     \"Test-Header-Option\": \"Value\" \n   } \n }",
+      "type": "object"
+    },
+    "singlePageServe": {
+      "default": false,
+      "description": "Activates SPA (Single Page App) serving. When this option is enabled, the static server module serves the primary index.html file for sub-directory requests only if another index.html doesn't exist in a specific sub-directory. The default value for this option is false.",
+      "type": "boolean"
+    },
+    "tokenSecurity": {
+      "default": "one-time",
+      "description": "Neutralinojs uses a client-server communication pattern with a local WebSocket to handle native calls. This local server is protected with an auto-generated token. This option defines the security implementation for the token. \n\n Accepts the following values: \n\n - one-time (Recommended): Server sends the access token only once, and the client persists it in the sessionStorage. If another client (Eg: browser) tries to access the app, 'NE_RT_INVTOKN' error message will be shown instead of the application. Using this option is recommended since it reduces security issues. \n\n - none: Server sends the access token always, so any new client can see the application. \n\n ::: Danger: If you are using native APIs that can access your computer's internals such as 'os', 'filesystem', modules, never use 'none' option since any new client can use those APIs. :::",
+      "enum": ["one-time", "none"],
+      "type": "string",
+      "x-intellij-enum-metadata": {
+        "none": "Server sends the access token always, so any new client can see the application.",
+        "one-time": "(Recommended): Server sends the access token only once, and the client persists it in the 'sessionStorage'."
+      }
+    },
+    "url": {
+      "description": "The entry URL of the application. Neutralinojs will initially load this URL. This property accepts both relative and absolute URLs. See following examples. \n\n \"url\": \"/\" \n\n The above config loads 'http://localhost:<port>/' URL initially (internally '/index.html' is loaded). You can use remote urls too. \n\n \"url\": \"http://example.com\"",
+      "type": "string"
+    }
+  },
+  "required": [],
+  "type": "object"
 }

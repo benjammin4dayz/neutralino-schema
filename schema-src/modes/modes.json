@@ -1,8 +1,8 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "additionalProperties": false,
-    "description": "You can override the configuration values from different modes. For example, you can use a specific URL in root-level and another URL in window-mode-level.",
-    "properties": {},
-    "required": [],
-    "type": "object"
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "description": "You can override the configuration values from different modes. For example, you can use a specific URL in root-level and another URL in window-mode-level.",
+  "properties": {},
+  "required": [],
+  "type": "object"
 }
