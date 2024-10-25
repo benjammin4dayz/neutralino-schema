@@ -1,21 +1,23 @@
 {
   "name": "neutralino-schema",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/benjammin4dayz/neutralino-schema"
   },
   "license": "MIT",
-  "main": "index.js",
+  "main": "/bin/cli.js",
+  "bin": {
+    "cli": "/bin/cli.js"
+  },
   "scripts": {
-    "build": "npm run lint && npm run format && npm run write",
+    "build": "npm run lint && npm run format && node ./bin/cli.js build",
     "format": "prettier --write **/*.{js,json}",
     "lint": "eslint --fix",
-    "serve": "node index.js --serve",
+    "serve": "node ./bin/cli.js serve",
     "start": "nodemon --watch **/*.{js,json} --exec npm run serve",
-    "validate": "node index.js --validate",
-    "write": "node index.js --write"
+    "validate": "node ./bin/cli.js validate"
   },
   "dependencies": {
     "ajv": "^8.17.1",

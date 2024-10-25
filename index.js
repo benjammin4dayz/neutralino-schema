@@ -6,15 +6,14 @@ const path = require('path');
 const process = require('process');
 const { getBundle } = require('./schema-src');
 
-(() => {
+module.exports = () => {
   const [flag, option] = process.argv.slice(2);
 
   switch (flag) {
-    case '-w':
-    case '--write':
-      getBundle().then(async bundle => {
+    case 'build':
+      getBundle({ fetchTags: true }).then(async bundle => {
         await compileSchema(bundle, { strict: true });
-        const outputPath = makeOutputPath('dist');
+        const outputPath = makeOutputPath(option || 'dist');
         writeSchemaFile(
           bundle,
           path.join(outputPath, 'neutralino.config.schema.json')
@@ -25,26 +24,24 @@ const { getBundle } = require('./schema-src');
         );
       });
       break;
-    case '-v':
-    case '--validate':
+    case 'validate':
       if (!option) {
         console.log('Missing argument: <path_to_config_file>');
         process.exit(1);
       }
       validateConfigFile(option);
       break;
-    case '-s':
-    case '--serve':
+    case 'serve':
       startDevServer(option || 5000);
       break;
     default:
       console.log(`Unknown option: ${flag}`);
       process.exit(1);
   }
-})();
+};
 
 function makeOutputPath(...pathParts) {
-  const outputPath = path.join(__dirname, ...pathParts);
+  const outputPath = path.resolve(path.join(...pathParts));
   if (fs.existsSync(outputPath)) fs.rmSync(outputPath, { recursive: true });
   fs.mkdirSync(outputPath);
   return outputPath;
@@ -91,7 +88,7 @@ function startDevServer(port) {
   http
     .createServer(async (req, res) => {
       res.writeHead(200, { 'Content-Type': 'application/json' });
-      const schema = await getBundle();
+      const schema = await getBundle({ fetchTags: true });
       console.log(
         `[${new Date().toLocaleTimeString()}] Serving schema request!`
       );
