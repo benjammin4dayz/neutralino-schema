@@ -12,9 +12,17 @@ const { getBundle } = require('./schema-src');
   switch (flag) {
     case '-w':
     case '--write':
-      const outputPath = makeOutputPath('dist');
-      writeSchemaFile(path.join(outputPath, 'neutralino.config.schema.json'));
-      writeConfigFile(path.join(outputPath, 'neutralino.config.json'));
+      getBundle().then(bundle => {
+        const outputPath = makeOutputPath('dist');
+        writeSchemaFile(
+          bundle,
+          path.join(outputPath, 'neutralino.schema.json')
+        );
+        writeConfigFile(
+          bundle,
+          path.join(outputPath, 'neutralino.config.json')
+        );
+      });
       break;
     case '-v':
     case '--validate':
@@ -45,19 +53,16 @@ function makeOutputPath(...pathParts) {
   return outputPath;
 }
 
-async function writeSchemaFile(filepath) {
-  const schema = await getBundle();
-  fs.writeFileSync(filepath, JSON.stringify(schema));
+function writeSchemaFile(schema, outputPath) {
+  fs.writeFileSync(outputPath, JSON.stringify(schema));
 }
 
-async function writeConfigFile(filepath) {
-  const schema = await getBundle();
+function writeConfigFile(schema, outputPath) {
   const config = instantiator.instantiate(schema);
-
-  config['$schema'] =
+  config.$schema =
     'https://raw.githubusercontent.com/benjammin4dayz/neutralino-schema/refs/heads/schema/dist/neutralino.config.schema.json';
 
-  fs.writeFileSync(filepath, JSON.stringify(config, null, 2));
+  fs.writeFileSync(outputPath, JSON.stringify(config, null, 2));
 }
 
 async function validateConfigFile(filepath, ajvOptions) {
