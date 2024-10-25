@@ -11,7 +11,7 @@ const { getBundle } = require('./schema-src');
     switch (flag) {
         case '-w':
         case '--write':
-            const outputPath = makeOutputPath('..', 'dist');
+            const outputPath = makeOutputPath('dist');
             writeSchemaFile(
                 path.join(outputPath, 'neutralino.config.schema.json')
             );
