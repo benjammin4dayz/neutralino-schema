@@ -10,7 +10,7 @@
             "type": "string"
         },
         "defaultMode": {
-            "description": "Mode of the application. Accepted values are window, browser, cloud, and chrome. However, having a config file is not mandatory to start a Neutralinojs app since the Neutralinojs framework often loads reasonable defaults for all configuration options.",
+            "description": "Mode of the application. \nAccepted values are window, browser, cloud, and chrome. \nHowever, having a config file is not mandatory to start a Neutralinojs app since the Neutralinojs framework often loads reasonable defaults for all configuration options.",
             "enum": ["window", "browser", "cloud", "chrome"],
             "type": "string",
             "x-intellij-enum-metadata": {
@@ -21,7 +21,8 @@
             }
         },
         "version": {
-            "description": "Application version. \n Eg: 2.4.22",
+            "description": "Semantic version of the application \n Eg: 2.4.22\n\nFollows the semantic versioning pattern. See https://semver.org/",
+            "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$",
             "type": "string"
         }
     },
