@@ -21,6 +21,11 @@
   "singlePageServe": false,
   "tokenSecurity": "one-time",
   "url": "",
+  "applicationIcon": "",
+  "applicationName": "",
+  "author": "",
+  "copyright": "",
+  "description": "",
   "cli": {
     "autoReloadExclude": "",
     "binaryName": "",
