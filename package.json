@@ -1,25 +1,32 @@
 {
-  "name": "neutralino-schema-builder",
+  "name": "neutralino-schema",
   "version": "1.0.0",
-  "license": "MIT",
-  "main": "index.js",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/benjammin4dayz/neutralino-schema"
   },
+  "license": "MIT",
+  "main": "index.js",
   "scripts": {
-    "build": "npm run format & node index.js --write",
+    "build": "npm run lint && npm run format && npm run write",
     "format": "prettier --write **/*.{js,json}",
-    "start": "nodemon --watch **/*.{js,json} --exec node index.js --serve",
-    "validate": "node index.js --validate"
+    "lint": "eslint --fix",
+    "serve": "node index.js --serve",
+    "start": "nodemon --watch **/*.{js,json} --exec npm run serve",
+    "validate": "node index.js --validate",
+    "write": "node index.js --write"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "json-schema-instantiator": "^1.0.0"
   },
   "devDependencies": {
+    "@eslint/js": "^9.13.0",
+    "eslint": "^9.13.0",
+    "globals": "^15.11.0",
     "nodemon": "^3.1.7",
     "prettier": "^3.3.3",
     "prettier-plugin-sort-json": "^4.0.0"
-  },
-  "dependencies": {
-    "json-schema-instantiator": "^1.0.0",
-    "ajv": "^8.17.1"
   }
 }
