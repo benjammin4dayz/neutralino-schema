@@ -21,7 +21,7 @@
             }
         },
         "version": {
-            "description": "Application version. \\n Eg: 2.4.22",
+            "description": "Application version. \n Eg: 2.4.22",
             "type": "string"
         }
     },
