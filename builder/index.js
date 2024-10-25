@@ -93,7 +93,7 @@ async function writeConfigFile(filepath) {
     const config = schemaToJSON(schema);
 
     config['$schema'] =
-        'https://raw.githubusercontent.com/benjammin4dayz/neutralino-schema/refs/heads/main/dist/neutralino.config.schema.json';
+        'https://raw.githubusercontent.com/benjammin4dayz/neutralino-schema/refs/heads/schema/dist/neutralino.config.schema.json';
 
     fs.writeFileSync(filepath, JSON.stringify(config, null, 2));
 }
