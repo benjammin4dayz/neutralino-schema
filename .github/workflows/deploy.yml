@@ -10,20 +10,23 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    env:
+      SHORT_SHA: ${{ github.sha }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 20.x
           cache: npm
+      - name: Set SHORT_SHA
+        run: echo "SHORT_SHA=$(echo ${{ github.sha }} | cut -c1-7)" >> $GITHUB_ENV
       - name: Install dependencies
         run: npm ci
       - name: Compile schema
         run: npm run build
-      - name: Clean workspace
-        run: rm -rf !(dist)
-      - name: Deploy to schema branch
+      - name: Deploy schema
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: '[deploy]: Compiled Schema (#${{github.event.head_commit.id}})'
-          branch: schema
+          commit_message: '[deploy]: Compiled Schema ${{ env.SHORT_SHA }}'
+          branch: main
+          file_pattern: 'dist/'

@@ -17,7 +17,7 @@ const { getBundle } = require('./schema-src');
         const outputPath = makeOutputPath('dist');
         writeSchemaFile(
           bundle,
-          path.join(outputPath, 'neutralino.schema.json')
+          path.join(outputPath, 'neutralino.config.schema.json')
         );
         writeConfigFile(
           bundle,
@@ -57,7 +57,7 @@ function writeSchemaFile(schema, outputPath) {
 function writeConfigFile(schema, outputPath) {
   const config = instantiator.instantiate(schema);
   config.$schema =
-    'https://raw.githubusercontent.com/benjammin4dayz/neutralino-schema/refs/heads/schema/dist/neutralino.config.schema.json';
+    'https://raw.githubusercontent.com/benjammin4dayz/neutralino-schema/refs/heads/main/dist/neutralino.config.schema.json';
 
   fs.writeFileSync(outputPath, JSON.stringify(config, null, 2));
 }
