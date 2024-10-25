@@ -1,0 +1,37 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+        "buildCommand": {
+            "description": "The neu build command will execute this command before generating the app bundle, so you can generate bundled version of frontend library code.",
+            "type": "string"
+        },
+        "devCommand": {
+            "description": "This command will run with the neu run command to start the frontend library's development server.",
+            "type": "string"
+        },
+        "devUrl": {
+            "description": "The URL of the frontend library's development server.",
+            "type": "string"
+        },
+        "initCommand": {
+            "description": "A command that gets executed after downloading a host app template with the neu create command.",
+            "type": "string"
+        },
+        "patchFile": {
+            "description": "Path of the HTML entry file for the frontend library.",
+            "type": "string"
+        },
+        "projectPath": {
+            "description": "The path to the project.",
+            "type": "string"
+        },
+        "waitTimeout": {
+            "default": 20000,
+            "description": "The time in milliseconds to wait for the frontend library's development server to start. By default, the max time is 20 seconds.",
+            "type": "number"
+        }
+    },
+    "required": [],
+    "type": "object"
+}

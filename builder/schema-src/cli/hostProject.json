@@ -1,0 +1,28 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": true,
+    "properties": {
+        "buildCommand": {
+            "description": "The neu build command will execute this command before generating the app bundle, so you can generate bundled version of host project code.",
+            "type": "string"
+        },
+        "buildPath": {
+            "description": "Location where the final ready-to-distribute host project files will be stored after the execution of buildCommand. Files in this folder are copied into the app bundle path after the execution of neu build command.",
+            "type": "string"
+        },
+        "devCommand": {
+            "description": "This command will run with the neu run command to start the host project.",
+            "type": "string"
+        },
+        "initCommand": {
+            "description": "A command that gets executed after downloading a host app template with the neu create command.",
+            "type": "string"
+        },
+        "projectPath": {
+            "description": "The path to the project.",
+            "type": "string"
+        }
+    },
+    "required": [],
+    "type": "object"
+}

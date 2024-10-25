@@ -1,0 +1,30 @@
+{
+    "$comment": "Top-level configuration values for Neutralinojs.",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "description": "",
+    "properties": {
+        "applicationId": {
+            "description": "Unique string to identify your application. \n\n Eg: js.neutralino.sample",
+            "pattern": "^[a-zA-Z0-9]+(\\.[a-zA-Z0-9]+)*$",
+            "type": "string"
+        },
+        "defaultMode": {
+            "description": "Mode of the application. Accepted values are window, browser, cloud, and chrome. However, having a config file is not mandatory to start a Neutralinojs app since the Neutralinojs framework often loads reasonable defaults for all configuration options.",
+            "enum": ["window", "browser", "cloud", "chrome"],
+            "type": "string",
+            "x-intellij-enum-metadata": {
+                "browser": "Runs the application in the user's default browser.",
+                "chrome": "Runs the application as a Chrome application.",
+                "cloud": "Runs the application as a background server.",
+                "window": "Runs the application on a native window."
+            }
+        },
+        "version": {
+            "description": "Application version. \\n Eg: 2.4.22",
+            "type": "string"
+        }
+    },
+    "required": [],
+    "type": "object"
+}

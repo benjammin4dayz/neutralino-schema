@@ -1,0 +1,21 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "description": "Properties for chrome mode. See https://neutralino.js.org/docs/configuration/modes/#chrome for more information.",
+    "properties": {
+        "args": {
+            "description": "Additional command-line arguments for the Chrome process.",
+            "type": "string"
+        },
+        "height": {
+            "description": "Height of the chrome window.",
+            "type": "integer"
+        },
+        "width": {
+            "description": "Width of the chrome window.",
+            "type": "integer"
+        }
+    },
+    "required": [],
+    "type": "object"
+}
