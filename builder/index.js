@@ -3,7 +3,6 @@ const fs = require('fs');
 const http = require('http');
 const path = require('path');
 const process = require('process');
-const package = require('./package.json');
 const { getBundle } = require('./schema-src');
 
 (() => {
@@ -32,7 +31,8 @@ const { getBundle } = require('./schema-src');
             break;
         case '-s':
         case '--serve':
-            return startDevServer(5000);
+            startDevServer(5000);
+            break;
         default:
             console.log(`Unknown option: ${flag}`);
             process.exit(1);
