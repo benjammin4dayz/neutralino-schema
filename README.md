@@ -1,5 +1,11 @@
 # Neutralino Schema Builder
 
+Add this key in `neutralino.config.json`:
+
+```json
+"$schema": "https://raw.githubusercontent.com/benjammin4dayz/neutralino-schema/refs/heads/main/dist/neutralino.config.schema.json"
+```
+
 ## Commands
 
 **npm run build**
