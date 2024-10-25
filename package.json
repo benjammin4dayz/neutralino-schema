@@ -14,14 +14,12 @@
     "validate": "node index.js --validate"
   },
   "devDependencies": {
-    "@apidevtools/json-schema-ref-parser": "^11.7.0",
-    "ajv": "^8.17.1",
-    "mocha": "^10.7.3",
     "nodemon": "^3.1.7",
     "prettier": "^3.3.3",
     "prettier-plugin-sort-json": "^4.0.0"
   },
   "dependencies": {
-    "json-schema-to-jsdoc": "^1.1.1"
+    "json-schema-instantiator": "^1.0.0",
+    "ajv": "^8.17.1"
   }
 }

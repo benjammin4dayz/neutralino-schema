@@ -1,6 +1,7 @@
 const Ajv = require('ajv');
 const fs = require('fs');
 const http = require('http');
+const instantiator = require('json-schema-instantiator');
 const path = require('path');
 const process = require('process');
 const { getBundle } = require('./schema-src');
@@ -50,40 +51,8 @@ async function writeSchemaFile(filepath) {
 }
 
 async function writeConfigFile(filepath) {
-  const schemaToJSON = schema => {
-    switch (schema.type) {
-      case 'object':
-        const obj = {};
-        if (schema.properties && typeof schema.properties === 'object') {
-          for (const [key, value] of Object.entries(schema.properties)) {
-            // Use default value or first enum if available; otherwise, infer one based on type
-            obj[key] =
-              value.default !== undefined
-                ? value.default
-                : value.enum && value.enum.length > 0
-                  ? value.enum[0]
-                  : schemaToJSON(value);
-          }
-        }
-        return obj;
-      case 'array':
-        return [];
-      case 'string':
-        return '';
-      case 'number':
-      case 'integer':
-        return 0;
-      case 'boolean':
-        return false;
-      case 'null':
-        return null;
-      default:
-        throw new Error(`Unknown type: ${schema.type}`);
-    }
-  };
-
   const schema = await getBundle();
-  const config = schemaToJSON(schema);
+  const config = instantiator.instantiate(schema);
 
   config['$schema'] =
     'https://raw.githubusercontent.com/benjammin4dayz/neutralino-schema/refs/heads/schema/dist/neutralino.config.schema.json';
