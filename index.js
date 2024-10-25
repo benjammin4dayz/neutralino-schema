@@ -31,7 +31,7 @@ const { getBundle } = require('./schema-src');
             break;
         case '-s':
         case '--serve':
-            startDevServer(5000);
+            startDevServer(option || 5000);
             break;
         default:
             console.log(`Unknown option: ${flag}`);

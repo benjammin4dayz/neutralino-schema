@@ -11,7 +11,7 @@
 
 -   Use [AJV](https://github.com/ajv-validator/ajv) to validate a local Neutralino config file against a freshly-bundled schema.
 
-**npm start**
+**npm start [PORT=5000]**
 
 -   Serve a freshly-bundled JSON schema to each request on any route.
 
