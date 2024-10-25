@@ -12,7 +12,8 @@ const { getBundle } = require('./schema-src');
   switch (flag) {
     case '-w':
     case '--write':
-      getBundle().then(bundle => {
+      getBundle().then(async bundle => {
+        await compileSchema(bundle, { strict: true });
         const outputPath = makeOutputPath('dist');
         writeSchemaFile(
           bundle,
@@ -30,11 +31,7 @@ const { getBundle } = require('./schema-src');
         console.log('Missing argument: <path_to_config_file>');
         process.exit(1);
       }
-      validateConfigFile(option, {
-        allErrors: true, // if false, only shows the first conflict
-        strict: 'log',
-        keywords: ['x-intellij-enum-metadata'],
-      });
+      validateConfigFile(option);
       break;
     case '-s':
     case '--serve':
@@ -65,7 +62,18 @@ function writeConfigFile(schema, outputPath) {
   fs.writeFileSync(outputPath, JSON.stringify(config, null, 2));
 }
 
-async function validateConfigFile(filepath, ajvOptions) {
+async function compileSchema(schema, ajvOptions = {}) {
+  const ajv = new Ajv({
+    allErrors: true, // If false, only shows the first conflict
+    strict: 'log',
+    keywords: ['x-intellij-enum-metadata'],
+    ...ajvOptions,
+  });
+  const validate = await ajv.compile(schema);
+  return validate;
+}
+
+async function validateConfigFile(filepath) {
   filepath = path.resolve(filepath);
   if (!fs.existsSync(filepath)) {
     console.log('File not found: ' + filepath);
@@ -73,9 +81,8 @@ async function validateConfigFile(filepath, ajvOptions) {
   }
   const configFile = require(filepath);
 
-  const ajv = new Ajv(ajvOptions);
   const schema = await getBundle();
-  const validate = await ajv.compile(schema);
+  const validate = await compileSchema(schema);
 
   console.log(validate(configFile) ? 'Valid!' : validate.errors);
 }
