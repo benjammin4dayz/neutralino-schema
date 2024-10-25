@@ -4,8 +4,7 @@ const http = require('http');
 const path = require('path');
 const process = require('process');
 const package = require('./package.json');
-
-const getBundle = () => require('./schema-src');
+const { getBundle } = require('./schema-src');
 
 (() => {
     const [flag, option] = process.argv.slice(2);
@@ -21,7 +20,12 @@ const getBundle = () => require('./schema-src');
             break;
         case '-v':
         case '--validate':
+            if (!option) {
+                console.log('Missing argument: <path_to_config_file>');
+                process.exit(1);
+            }
             validateConfigFile(option, {
+                allErrors: true, // if false, only shows the first conflict
                 strict: 'log',
                 keywords: ['x-intellij-enum-metadata'],
             });
@@ -59,11 +63,13 @@ async function writeConfigFile(filepath) {
                     for (const [key, value] of Object.entries(
                         schema.properties
                     )) {
-                        // Use default value if available; otherwise, infer one based on type
+                        // Use default value or first enum if available; otherwise, infer one based on type
                         obj[key] =
                             value.default !== undefined
                                 ? value.default
-                                : schemaToJSON(value);
+                                : value.enum && value.enum.length > 0
+                                  ? value.enum[0]
+                                  : schemaToJSON(value);
                     }
                 }
                 return obj;

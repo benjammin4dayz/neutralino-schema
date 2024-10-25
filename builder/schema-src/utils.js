@@ -46,3 +46,23 @@ module.exports.requireAllIndexed = dir => {
         return acc;
     }, {});
 };
+
+/**
+ * Fetches all available tags from a given repo owned by Neutralinojs
+ *
+ * @param {string} repo
+ * @returns {Promise<string[]>}
+ */
+module.exports.getNeutralinoTags = repoName => {
+    console.log('Fetching available tags from GitHub...');
+    return fetch(`https://api.github.com/repos/neutralinojs/${repoName}/tags`)
+        .then(response => response.json())
+        .then(data => data.map(d => d.name))
+        .catch(err => {
+            console.error(
+                `Failed to fetch tags from https://api.github.com/repos/neutralinojs/${repoName}/tags`,
+                err
+            );
+            return [];
+        });
+};
