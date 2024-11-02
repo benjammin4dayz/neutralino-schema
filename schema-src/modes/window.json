@@ -43,6 +43,18 @@
       "description": "Application icon's file name. You can directly point to an image file in the resources directory. We recommend you to choose a transparent PNG file.",
       "type": "string"
     },
+    "injectClientLibrary": {
+      "description": "Inject Neutralino's client library into the webview at launch.\n\nIMPORTANT: As of v5.5.0, this feature only works with HTTP URLs.",
+      "type": "boolean"
+    },
+    "injectGlobals": {
+      "description": "Inject Neutralino's `NL_*` global variables into the webview at launch.\n\nIMPORTANT: As of v5.5.0, this feature only works with HTTP URLs.",
+      "type": "boolean"
+    },
+    "injectScript": {
+      "description": "Path to a JavaScript file to be evaluated before the primary app content is loaded.\nNote that `injectClientLibrary` must be true for native API calls to work.\n\nIMPORTANT: As of v5.5.0, this feature only works with HTTP URLs.",
+      "type": "string"
+    },
     "maxHeight": {
       "description": "Maximum height of the native window. The default value is the height value.",
       "type": "number"

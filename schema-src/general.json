@@ -103,6 +103,12 @@
       "description": "Activates SPA (Single Page App) serving. When this option is enabled, the static server module serves the primary index.html file for sub-directory requests only if another index.html doesn't exist in a specific sub-directory. The default value for this option is false.",
       "type": "boolean"
     },
+    "storageLocation ": {
+      "default": "app",
+      "description": "If this value is 'app', Neutralino will store data in the `.storage/` folder next to the app's executable file.\nIf this value is 'system', Neutralino will use in a platform-specific folder for application data.\n\nThe default value is 'app'.",
+      "enum": ["app", "system"],
+      "type": "string"
+    },
     "tokenSecurity": {
       "default": "one-time",
       "description": "Neutralinojs uses a client-server communication pattern with a local WebSocket to handle native calls. This local server is protected with an auto-generated token. This option defines the security implementation for the token. \n\n Accepts the following values: \n\n - one-time (Recommended): Server sends the access token only once, and the client persists it in the sessionStorage. If another client (Eg: browser) tries to access the app, 'NE_RT_INVTOKN' error message will be shown instead of the application. Using this option is recommended since it reduces security issues. \n\n - none: Server sends the access token always, so any new client can see the application. \n\n ::: Danger: If you are using native APIs that can access your computer's internals such as 'os', 'filesystem', modules, never use 'none' option since any new client can use those APIs. :::",
