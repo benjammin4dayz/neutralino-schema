@@ -26,11 +26,20 @@ module.exports.getBundle = async ({ fetchTags } = {}) => {
       bundleCache.clientVersion = await getNeutralinoTags('neutralino.js');
     }
 
+    const withNightly = arr => {
+      if (arr.includes('nightly')) {
+        return arr;
+      }
+      return [...arr, 'nightly'];
+    };
+
     // include all known versions in the respective enum
-    schema.properties.cli.properties.binaryVersion.enum =
-      bundleCache.binaryVersion;
-    schema.properties.cli.properties.clientVersion.enum =
-      bundleCache.clientVersion;
+    schema.properties.cli.properties.binaryVersion.enum = withNightly(
+      bundleCache.binaryVersion
+    );
+    schema.properties.cli.properties.clientVersion.enum = withNightly(
+      bundleCache.clientVersion
+    );
   }
 
   return schema;
