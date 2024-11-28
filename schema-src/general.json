@@ -4,6 +4,12 @@
   "additionalProperties": false,
   "description": "",
   "properties": {
+    "dataLocation": {
+      "default": "app",
+      "description": "Set the framework's data storage directory. When set to 'app' (default), Neutralino will store data next to the app's executable file.\nWhen set to 'system', Neutralino will use a platform-specific folder e.g. .local/share/<appid> or %appdata%/<appid>. This path can be read from the `NL_DATAPATH` global variable.",
+      "enum": ["app", "system"],
+      "type": "string"
+    },
     "documentRoot": {
       "description": "Sets the document root for the static server. For example, if you need to use 'resources' directory as the document root, you can use setup 'documentRoot' as follows. \n\n { \n   \"documentRoot\": \"/resource/\", \n   \"url\": \"/\" \n } \n\n Make sure to configure 'url' properly with the document root. The following configuration is wrong, it instructs the static server to fetch resources from './resources/resources'. \n\n { \n   \"documentRoot\": \"/resources/\", \n   \"url\": \"/resources/\" \n } \n\n However, you can use a sub-directory in URL, as shown below. \n\n { \n   \"documentRoot\": \"/\", \n   \"url\": \"/resources/\" \n }",
       "type": "string"
@@ -103,9 +109,9 @@
       "description": "Activates SPA (Single Page App) serving. When this option is enabled, the static server module serves the primary index.html file for sub-directory requests only if another index.html doesn't exist in a specific sub-directory. The default value for this option is false.",
       "type": "boolean"
     },
-    "storageLocation ": {
+    "storageLocation": {
       "default": "app",
-      "description": "If this value is 'app', Neutralino will store data in the `.storage/` folder next to the app's executable file.\nIf this value is 'system', Neutralino will use in a platform-specific folder for application data.\n\nThe default value is 'app'.",
+      "description": "Set the app's data storage directory. When set to 'app' (default), storage files are saved next to the app's executable file.\nWhen set to 'system', storage files are saved in platform-specific standard data directory.\nIn both `app` and `system` modes, the framework will use the `.storage` sub-directory for storage files.",
       "enum": ["app", "system"],
       "type": "string"
     },
