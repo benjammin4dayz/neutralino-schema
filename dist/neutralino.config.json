@@ -3,6 +3,7 @@
   "applicationId": "",
   "defaultMode": "window",
   "version": "",
+  "dataLocation": "app",
   "documentRoot": "",
   "enableExtensions": false,
   "enableNativeAPI": false,
@@ -19,7 +20,7 @@
   "port": 0,
   "serverHeaders": {},
   "singlePageServe": false,
-  "storageLocation ": "app",
+  "storageLocation": "app",
   "tokenSecurity": "one-time",
   "url": "",
   "applicationIcon": "",
@@ -30,9 +31,9 @@
   "cli": {
     "autoReloadExclude": "",
     "binaryName": "",
-    "binaryVersion": "5.4.0",
+    "binaryVersion": "5.5.0",
     "clientLibrary": "",
-    "clientVersion": "5.4.0",
+    "clientVersion": "5.5.0",
     "distributionPath": "",
     "extensionsExclude": "",
     "extensionsPath": "",
@@ -57,6 +58,7 @@
   },
   "modes": {
     "browser": {
+      "dataLocation": "app",
       "documentRoot": "",
       "enableExtensions": false,
       "enableNativeAPI": false,
@@ -73,11 +75,12 @@
       "port": 0,
       "serverHeaders": {},
       "singlePageServe": false,
-      "storageLocation ": "app",
+      "storageLocation": "app",
       "tokenSecurity": "one-time",
       "url": ""
     },
     "chrome": {
+      "dataLocation": "app",
       "documentRoot": "",
       "enableExtensions": false,
       "enableNativeAPI": false,
@@ -94,7 +97,7 @@
       "port": 0,
       "serverHeaders": {},
       "singlePageServe": false,
-      "storageLocation ": "app",
+      "storageLocation": "app",
       "tokenSecurity": "one-time",
       "url": "",
       "args": "",
@@ -102,6 +105,7 @@
       "width": 0
     },
     "cloud": {
+      "dataLocation": "app",
       "documentRoot": "",
       "enableExtensions": false,
       "enableNativeAPI": false,
@@ -118,11 +122,12 @@
       "port": 0,
       "serverHeaders": {},
       "singlePageServe": false,
-      "storageLocation ": "app",
+      "storageLocation": "app",
       "tokenSecurity": "one-time",
       "url": ""
     },
     "window": {
+      "dataLocation": "app",
       "documentRoot": "",
       "enableExtensions": false,
       "enableNativeAPI": false,
@@ -139,7 +144,7 @@
       "port": 0,
       "serverHeaders": {},
       "singlePageServe": false,
-      "storageLocation ": "app",
+      "storageLocation": "app",
       "tokenSecurity": "one-time",
       "url": "",
       "alwaysOnTop": false,
